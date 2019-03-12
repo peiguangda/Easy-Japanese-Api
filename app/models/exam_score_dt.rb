@@ -1,0 +1,2 @@
+class ExamScoreDt < ApplicationRecord
+end

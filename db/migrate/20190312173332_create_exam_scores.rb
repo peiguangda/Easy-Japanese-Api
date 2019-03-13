@@ -3,6 +3,7 @@ class CreateExamScores < ActiveRecord::Migration[5.2]
     create_table :exam_scores do |t|
       t.references :examinfo, foreign_key: true, index: true, limit: 8
       t.references :user_info, foreign_key: true, index: true
+      t.references :user, foreign_key: true, index: true
       t.integer :course_id, index: true, limit: 8
       t.string :user_name
       t.integer :status, null: false, index: true

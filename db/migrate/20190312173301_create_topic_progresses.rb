@@ -4,6 +4,7 @@ class CreateTopicProgresses < ActiveRecord::Migration[5.2]
       t.integer :parent_id, index: true, limit: 8
       t.references :topic, foreign_key: true, index: true, limit: 8
       t.references :user_info, foreign_key: true, index: true
+      t.references :user, foreign_key: true, index: true
       t.integer :course_id, index: true, limit: 8
       t.integer :progress, default: 0, index: true
       t.integer :content_type, default: 0

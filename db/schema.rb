@@ -270,6 +270,7 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
 
   create_table "users", force: :cascade do |t|
     t.string "encrypted_password", default: "", null: false
+    t.string "auth_token", default: ""
     t.string "account", null: false
     t.string "email", null: false
     t.string "full_name", default: ""
@@ -283,6 +284,7 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account"], name: "index_users_on_account"
+    t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email"
     t.index ["full_name"], name: "index_users_on_full_name"
     t.index ["phone_number"], name: "index_users_on_phone_number"

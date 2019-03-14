@@ -1,8 +1,6 @@
 class CreateTopics < ActiveRecord::Migration[5.2]
   def change
     create_table :topics do |t|
-      t.references :user_info, foreign_key: true, index: true
-      t.references :user, foreign_key: true, index: true
       t.references :course, foreign_key: true, index: true, limit: 8
       t.integer :parent_id, index: true, limit: 8
       t.integer :type, null: false

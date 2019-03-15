@@ -31,17 +31,17 @@ class Api::V1::CoursesController < ApplicationController
 
   def destroy
     if find_course.destroy
-      head 204
+      render json: {status: "success"}
     else
       render json: {errors: course.errors}, status: 422
     end
   end
 
+  private
+
   def find_course
     current_user.courses.find params[:id]
   end
-
-  private
 
   def course_params
     params.require(:course).permit :code, :short_description, :name,

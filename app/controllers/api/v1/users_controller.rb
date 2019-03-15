@@ -27,7 +27,7 @@ class Api::V1::UsersController < ApplicationController
 
   def destroy
     if current_user.destroy
-      head 204
+      render json: {status: "success"}
     else
       render json: {errors: user.errors}, status: 422
     end

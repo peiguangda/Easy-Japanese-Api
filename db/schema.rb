@@ -193,8 +193,9 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
 
   create_table "topics", force: :cascade do |t|
     t.integer "course_id", limit: 8
+    t.integer "user_id", limit: 8, null: false
     t.integer "parent_id", limit: 8
-    t.integer "type", null: false
+    t.integer "type"
     t.integer "level"
     t.integer "status", null: false
     t.integer "childrent_type", null: false
@@ -225,6 +226,7 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
     t.index ["sort_id"], name: "index_topics_on_sort_id"
     t.index ["status"], name: "index_topics_on_status"
     t.index ["tag"], name: "index_topics_on_tag"
+    t.index ["user_id"], name: "index_topics_on_user_id"
   end
 
   create_table "user_courses", force: :cascade do |t|

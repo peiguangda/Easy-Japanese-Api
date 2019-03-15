@@ -1,10 +1,9 @@
 class CreateUserCourses < ActiveRecord::Migration[5.2]
   def change
     create_table :user_courses do |t|
-      t.references :user_info, foreign_key: true, index: true
       t.references :user, foreign_key: true, index: true
-      t.integer :role_type, null: false, default: 0
       t.references :course, foreign_key: true, index: true
+      t.integer :role_type, null: false, default: 0
       t.timestamp :join_date
       t.timestamp :expire_date
       t.integer :total_time_study, default: 0, limit: 8

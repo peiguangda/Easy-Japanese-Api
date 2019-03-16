@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2019_03_13_162912) do
 
   create_table "card_progresses", force: :cascade do |t|
-    t.integer "user_info_id"
     t.integer "user_id"
     t.integer "card_id", limit: 8
     t.integer "course_id", limit: 8
@@ -32,13 +31,10 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
     t.index ["skill"], name: "index_card_progresses_on_skill"
     t.index ["topic_id"], name: "index_card_progresses_on_topic_id"
     t.index ["user_id"], name: "index_card_progresses_on_user_id"
-    t.index ["user_info_id"], name: "index_card_progresses_on_user_info_id"
   end
 
   create_table "cards", force: :cascade do |t|
     t.integer "order_index"
-    t.integer "user_info_id"
-    t.integer "user_id"
     t.integer "difficulty_level"
     t.integer "type", null: false
     t.integer "parent_id", limit: 8
@@ -62,12 +58,9 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
     t.index ["order_index"], name: "index_cards_on_order_index"
     t.index ["parent_id"], name: "index_cards_on_parent_id"
     t.index ["type"], name: "index_cards_on_type"
-    t.index ["user_id"], name: "index_cards_on_user_id"
-    t.index ["user_info_id"], name: "index_cards_on_user_info_id"
   end
 
   create_table "courses", force: :cascade do |t|
-    t.integer "user_info_id"
     t.integer "user_id"
     t.string "code"
     t.string "short_description"
@@ -90,7 +83,6 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
     t.index ["index"], name: "index_courses_on_index"
     t.index ["member_num"], name: "index_courses_on_member_num"
     t.index ["user_id"], name: "index_courses_on_user_id"
-    t.index ["user_info_id"], name: "index_courses_on_user_info_id"
   end
 
   create_table "exam_infos", force: :cascade do |t|
@@ -135,7 +127,6 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
 
   create_table "exam_scores", force: :cascade do |t|
     t.integer "examinfo_id", limit: 8
-    t.integer "user_info_id"
     t.integer "user_id"
     t.integer "course_id", limit: 8
     t.string "user_name"
@@ -164,7 +155,6 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
     t.index ["topic_id"], name: "index_exam_scores_on_topic_id"
     t.index ["total_score"], name: "index_exam_scores_on_total_score"
     t.index ["user_id"], name: "index_exam_scores_on_user_id"
-    t.index ["user_info_id"], name: "index_exam_scores_on_user_info_id"
   end
 
   create_table "exam_settings", force: :cascade do |t|
@@ -179,7 +169,6 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
   create_table "topic_progresses", force: :cascade do |t|
     t.integer "parent_id", limit: 8
     t.integer "topic_id", limit: 8
-    t.integer "user_info_id"
     t.integer "user_id"
     t.integer "course_id", limit: 8
     t.integer "progress", default: 0
@@ -200,15 +189,13 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
     t.index ["progress"], name: "index_topic_progresses_on_progress"
     t.index ["topic_id"], name: "index_topic_progresses_on_topic_id"
     t.index ["user_id"], name: "index_topic_progresses_on_user_id"
-    t.index ["user_info_id"], name: "index_topic_progresses_on_user_info_id"
   end
 
   create_table "topics", force: :cascade do |t|
-    t.integer "user_info_id"
-    t.integer "user_id"
     t.integer "course_id", limit: 8
+    t.integer "user_id", limit: 8, null: false
     t.integer "parent_id", limit: 8
-    t.integer "type", null: false
+    t.integer "type"
     t.integer "level"
     t.integer "status", null: false
     t.integer "childrent_type", null: false
@@ -240,14 +227,12 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
     t.index ["status"], name: "index_topics_on_status"
     t.index ["tag"], name: "index_topics_on_tag"
     t.index ["user_id"], name: "index_topics_on_user_id"
-    t.index ["user_info_id"], name: "index_topics_on_user_info_id"
   end
 
   create_table "user_courses", force: :cascade do |t|
-    t.integer "user_info_id"
     t.integer "user_id"
-    t.integer "role_type", default: 0, null: false
     t.integer "course_id"
+    t.integer "role_type", default: 0, null: false
     t.datetime "join_date"
     t.datetime "expire_date"
     t.integer "total_time_study", limit: 8, default: 0
@@ -265,7 +250,6 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
     t.index ["rate_value"], name: "index_user_courses_on_rate_value"
     t.index ["topic_passed"], name: "index_user_courses_on_topic_passed"
     t.index ["user_id"], name: "index_user_courses_on_user_id"
-    t.index ["user_info_id"], name: "index_user_courses_on_user_info_id"
   end
 
   create_table "users", force: :cascade do |t|

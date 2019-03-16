@@ -1,9 +1,12 @@
 class CreateCards < ActiveRecord::Migration[5.2]
   def change
     create_table :cards do |t|
+      t.references :topic, foreign_key: true, index: true, limit: 8
+      t.references :course, foreign_key: true, index: true, limit: 8
+      t.references :user, foreign_key: true, index: true, limit: 8
       t.integer :order_index, index: true
       t.integer :difficulty_level, index: true
-      t.integer :type, null: false, index: true
+      t.integer :type, index: true
       t.integer :parent_id, index: true, limit: 8
       t.integer :has_child, default: 0, index: true
       t.integer :status

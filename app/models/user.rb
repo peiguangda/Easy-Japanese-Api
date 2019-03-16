@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :courses
   has_many :topic_progresses, dependent: :destroy
   has_many :topics
+  has_many :cards
   has_many :exam_scores, dependent: :destroy
 
   validates :auth_token, uniqueness: true

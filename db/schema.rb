@@ -34,9 +34,12 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
   end
 
   create_table "cards", force: :cascade do |t|
+    t.integer "course_id", limit: 8
+    t.integer "user_id", limit: 8
+    t.integer "topic_id", limit: 8
     t.integer "order_index"
     t.integer "difficulty_level"
-    t.integer "type", null: false
+    t.integer "type"
     t.integer "parent_id", limit: 8
     t.integer "has_child", default: 0
     t.integer "status"
@@ -53,11 +56,14 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["code"], name: "index_cards_on_code"
+    t.index ["course_id"], name: "index_cards_on_course_id"
     t.index ["difficulty_level"], name: "index_cards_on_difficulty_level"
     t.index ["has_child"], name: "index_cards_on_has_child"
     t.index ["order_index"], name: "index_cards_on_order_index"
     t.index ["parent_id"], name: "index_cards_on_parent_id"
+    t.index ["topic_id"], name: "index_cards_on_topic_id"
     t.index ["type"], name: "index_cards_on_type"
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -193,7 +199,7 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
 
   create_table "topics", force: :cascade do |t|
     t.integer "course_id", limit: 8
-    t.integer "user_id", limit: 8, null: false
+    t.integer "user_id", limit: 8
     t.integer "parent_id", limit: 8
     t.integer "type"
     t.integer "level"

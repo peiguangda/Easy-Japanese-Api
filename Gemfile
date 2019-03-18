@@ -6,6 +6,7 @@ gem "rails", "~> 5.2.1"
 gem "sqlite3", "~> 1.3.6"
 gem "puma", "~> 3.11"
 gem "devise"
+gem "rack-cors", require: "rack/cors"
 
 gem "bootsnap", ">= 1.1.0", require: false
 

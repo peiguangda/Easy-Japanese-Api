@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
   end
 
   create_table "cards", force: :cascade do |t|
+    t.integer "topic_id", limit: 8
     t.integer "course_id", limit: 8
     t.integer "user_id", limit: 8
-    t.integer "topic_id", limit: 8
     t.integer "order_index"
     t.integer "difficulty_level"
     t.integer "type"

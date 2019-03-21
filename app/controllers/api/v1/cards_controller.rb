@@ -5,7 +5,8 @@ class Api::V1::CardsController < ApplicationController
 
   def index
     course = find_course
-    respond_with course.topics.find(params[:topic_id]).cards.all if course
+    cards = course.topics.find(params[:topic_id]).cards.all if course
+    render json: {data: cards, status: "success"}, status: 200
   end
 
   def create
@@ -15,7 +16,7 @@ class Api::V1::CardsController < ApplicationController
     card.set_user_create_card current_user if card
     card.set_course_for_card course if card
     if card.save
-      render json: {card: card}, status: 200, location: api_course_topic_cards_path
+      render json: {data: card, status: "success"}, status: 200, location: api_course_topic_cards_path
     else
       render json: {errors: card.errors}, status: 422
     end
@@ -24,7 +25,7 @@ class Api::V1::CardsController < ApplicationController
    def update
     card = find_card
     if card.update card_params
-      render json: {card: card}, status: 201, location: api_course_topic_cards_path
+      render json: {data: card, status: "success"}, status: 201, location: api_course_topic_cards_path
     else
       render json: {errors: card.errors}, status: 422
     end

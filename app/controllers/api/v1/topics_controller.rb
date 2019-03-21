@@ -5,14 +5,15 @@ class Api::V1::TopicsController < ApplicationController
 
   def index
     course = find_course
-    respond_with course.topics.all if course
+    topics = course.topics.all if course
+    render json: {data: topics, status: "success"}, status: 200
   end
 
   def create
     topic = Course.find(params[:course_id]).topics.build topic_params
     topic.set_user_create_topic current_user if topic
     if topic.save
-      render json: {topic: topic}, status: 200, location: api_course_topics_path
+      render json: {data: topic, status: "success"}, status: 200, location: api_course_topics_path
     else
       render json: {errors: topic.errors}, status: 422
     end
@@ -21,7 +22,7 @@ class Api::V1::TopicsController < ApplicationController
    def update
     topic = find_topic
     if topic.update topic_params
-      render json: {topic: topic}, status: 201, location: api_course_topics_path
+      render json: {data: topic, status: "success"}, status: 201, location: api_course_topics_path
     else
       render json: {errors: topic.errors}, status: 422
     end

@@ -3,6 +3,11 @@ class Api::V1::UserCoursesController < ApplicationController
   before_action :authenticate_with_token!
   respond_to :json
 
+  def index
+    courses = UserCourse.where({course_id: user_course_params[:course_id]})
+    render json: {data: courses, status: "success"}, status: 400 if courses
+  end
+
   def create
     user_course = current_user.user_courses.build user_course_params
     if user_course.save
@@ -12,7 +17,26 @@ class Api::V1::UserCoursesController < ApplicationController
     end
   end
 
+  def show
+    user = find_user
+    render json: user, status: 400 if user
+  end
+
+  def destroy
+    user = find_user
+    return render json: {errors: "not found user"}, status: 422 unless user
+    if user.destroy
+      render json: {status: "success"}
+    else
+      render json: {errors: user.errors}, status: 422
+    end
+  end
+
   private
+
+  def find_user
+    UserCourse.find_by user_id: params[:id]
+  end
 
   def user_course_params
     params.require(:user_course).permit :course_id, :role_type, :join_date, :expire_date,

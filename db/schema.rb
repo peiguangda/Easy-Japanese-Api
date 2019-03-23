@@ -176,7 +176,6 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
     t.integer "parent_id", limit: 8
     t.integer "topic_id", limit: 8
     t.integer "user_id"
-    t.integer "course_id", limit: 8
     t.integer "progress", default: 0
     t.integer "content_type", default: 0
     t.integer "status"
@@ -189,7 +188,6 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
     t.string "category_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_topic_progresses_on_course_id"
     t.index ["numbers_question_essay"], name: "index_topic_progresses_on_numbers_question_essay"
     t.index ["parent_id"], name: "index_topic_progresses_on_parent_id"
     t.index ["progress"], name: "index_topic_progresses_on_progress"

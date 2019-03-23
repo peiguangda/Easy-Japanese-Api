@@ -13,7 +13,7 @@ class Api::V1::TopicsController < ApplicationController
     topic = Course.find(params[:course_id]).topics.build topic_params
     topic.set_user_create_topic current_user if topic
     if topic.save
-      render json: {data: topic, status: "success"}, status: 200, location: api_course_topics_path
+      render json: {data: topic, status: "success"}, status: 200, location: api_topics_path
     else
       render json: {errors: topic.errors}, status: 422
     end
@@ -22,7 +22,7 @@ class Api::V1::TopicsController < ApplicationController
    def update
     topic = find_topic
     if topic.update topic_params
-      render json: {data: topic, status: "success"}, status: 201, location: api_course_topics_path
+      render json: {data: topic, status: "success"}, status: 201, location: api_topics_path
     else
       render json: {errors: topic.errors}, status: 422
     end
@@ -30,7 +30,7 @@ class Api::V1::TopicsController < ApplicationController
 
   def show
     topic = find_topic
-    return respond_with topic if topic
+    return render json: {data: topic, status: "success"} if topic
     render json: {errors: "not found topic"}, status: 422
   end
 
@@ -47,16 +47,15 @@ class Api::V1::TopicsController < ApplicationController
   private
 
   def find_course
-    course = Course.find_by(id: params[:course_id])
+    Course.find_by(id: params[:course_id])
   end
 
   def find_topic
-    course = find_course
-    course.topics.find_by id: params[:id] if course
+    Topic.find_by id: params[:id]
   end
 
   def topic_params
-    params.require(:topic).permit :parent_id, :level,
+    params.require(:topic).permit :course_id, :parent_id, :level,
                                  :status, :childrent_type, :start_time, :end_time, :tag,
                                  :sort_id, :order_index, :user_name, :name, :description, :short_description, :avatar, :total_card_num, :question_number, :password, :duration, :pass, :time_practice, :score_scale
   end

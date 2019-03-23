@@ -4,8 +4,8 @@ class Api::V1::CardsController < ApplicationController
   respond_to :json
 
   def index
-    course = find_course
-    cards = course.topics.find(params[:topic_id]).cards.all if course
+    topic = find_topic
+    cards = topic.cards.all if topic
     render json: {data: cards, status: "success"}, status: 200
   end
 
@@ -50,16 +50,15 @@ class Api::V1::CardsController < ApplicationController
   private
 
    def find_course
-    course = Course.find_by(id: card_params[:course_id])
+    course = Course.find_by(id: params[:course_id])
   end
 
   def find_topic
-    course = find_course
-    topic = course.topics.find_by(id: card_params[:topic_id]) if course
+    topic = Topic.find_by(id: params[:topic_id])
   end
 
   def find_card
-    Cards.find_by id: params[:id] if topic
+    Card.find_by id: params[:id]
   end
 
   def card_params

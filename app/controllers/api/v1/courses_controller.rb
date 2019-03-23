@@ -27,7 +27,7 @@ class Api::V1::CoursesController < ApplicationController
   end
 
   def show
-    respond_with find_course
+    render json: {data: find_course, status: "success"}
   end
 
   def destroy

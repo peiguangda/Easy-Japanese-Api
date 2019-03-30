@@ -1,4 +1,8 @@
 class Api::V1::SessionsController < ApplicationController
+  include Authenticable
+  before_action :authenticate_with_token!, only: [:destroy]
+  respond_to :json
+  
   def create
     user_password = params[:session][:password]
     user_account = params[:session][:account]
@@ -15,9 +19,9 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def destroy
-    user = User.find_by auth_token: params[:id]
+    user = current_user
     user.generate_authentication_token!
-    user.save
-    head 204
+    return render json: {status: "success"}, status: 200 if user.save
+    return render json: {status: "errors"}
   end
 end

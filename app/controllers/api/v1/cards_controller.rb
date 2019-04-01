@@ -1,6 +1,6 @@
 class Api::V1::CardsController < ApplicationController
   include Authenticable
-  before_action :authenticate_with_token!
+  before_action :authenticate_with_token!, only: [:create, :update, :destroy]
   respond_to :json
 
   def index

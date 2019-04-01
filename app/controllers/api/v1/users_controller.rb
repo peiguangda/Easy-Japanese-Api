@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   include Authenticable
-  before_action :authenticate_with_token!, only: [:update, :destroy]
+  before_action :authenticate_with_token!, only: [:update, :destroy, :show_profile]
   respond_to :json
 
   def create
@@ -31,6 +31,10 @@ class Api::V1::UsersController < ApplicationController
     else
       render json: {errors: user.errors}, status: 422
     end
+  end
+  
+  def show_profile
+    render json: {status: "success", data: current_user}
   end
 
   private

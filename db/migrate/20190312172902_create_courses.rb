@@ -13,10 +13,13 @@ class CreateCourses < ActiveRecord::Migration[5.2]
       t.timestamp :end_date, limit: 8
       t.integer :status, null: false
       t.integer :index, index: true
+      t.integer :lesson_num, default: 0
       t.integer :member_num, default: 0, index: true
       t.integer :time_expire, default: 0
       t.integer :day_to_open_lesson
       t.integer :type
+      t.string :cost
+      t.string :language
 
       t.timestamps
     end

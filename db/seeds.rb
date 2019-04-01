@@ -12,7 +12,7 @@ user = User.first
     name: "Khóa học tiếng nhật ôn thi JLPT N"+ (i+1).to_s,
     owner_name: "Bùi Quang Đại",
     avatar: "https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/88/59/99/885999fa-8119-d24b-fbd7-4692b619f5d8/AppIcon-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-4.png/246x0w.jpg?fbclid=IwAR0YYL3PnBuXA4s3svzjK5yACIlGOIKyMiCjySi68KbOafgllDEHHPhs5LQ",
-    description: "Học tiếng nhật online, ngân hàng tổng hợp đề luyện thi thử năng lực tiếng nhật jlpt n5 n4 n3 n2 n1 có đáp án và dịch nghĩa vô cùng đa dạng,..Khóa luyện thi tiếng nhật trực tuyến, uy tín, chất lượng, tất cả khóa học từ vựng, ngữ pháp, đọc hiểu, nghe được được song ngữ việt-nhật giúp cho học sinh yên tâm cho những kỳ thi tiếng nhật hàng năm. Đặc 
+    description: "Học tiếng nhật online, ngân hàng tổng hợp đề luyện thi thử năng lực tiếng nhật jlpt n5 n4 n3 n2 n1 có đáp án và dịch nghĩa vô cùng đa dạng,..Khóa luyện thi tiếng nhật trực tuyến, uy tín, chất lượng, tất cả khóa học từ vựng, ngữ pháp, đọc hiểu, nghe được được song ngữ việt-nhật giúp cho học sinh yên tâm cho những kỳ thi tiếng nhật hàng năm. Đặc
     biệt kho đề thi được biên soạn cập nhật đề mới thường xuyên nên đáp ứng đầy đủ kỹ năng cần thiết cho các bạn học sinh.",
     password: "123456",
     android_url: "url.com",
@@ -22,6 +22,9 @@ user = User.first
     member_num: 20,
     time_expire: 1,
     day_to_open_lesson: 1,
+    cost: "500.000 VND",
+    language: "Tiếng Nhật",
+    lesson_num: 10,
     })
 end
 

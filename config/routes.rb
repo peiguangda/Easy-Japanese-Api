@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get 'profile', action: :show_profile, controller: 'users'
       resources :users, only: [:show, :create, :update, :destroy]
       resources :sessions, only: [:create, :destroy]
+      get 'users_course', action: :find_user_by_course, controller: 'user_courses'
       resources :courses
       resources :topics
       resources :cards

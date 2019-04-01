@@ -16,6 +16,9 @@ class Api::V1::CardsController < ApplicationController
     card.set_user_create_card current_user if card
     card.set_course_for_card course if card
     if card.save
+      topic = current_user.courses.find(params[:course_id].topics.find(params[:topic_id])
+      topic.question_number += 1
+      topic.save
       render json: {data: card, status: "success"}, status: 200, location: api_cards_path
     else
       render json: {errors: card.errors}, status: 422

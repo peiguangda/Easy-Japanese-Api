@@ -14,6 +14,9 @@ class Api::V1::TopicsController < ApplicationController
     topic = Course.find(params[:course_id]).topics.build topic_params
     topic.set_user_create_topic current_user if topic
     if topic.save
+      course = current_user.courses.find(params[:course_id])
+      course.lesson_num += 1
+      course.save
       render json: {data: topic, status: "success"}, status: 200, location: api_topics_path
     else
       render json: {errors: topic.errors}, status: 422
@@ -58,7 +61,7 @@ class Api::V1::TopicsController < ApplicationController
   def topic_params
     params.require(:topic).permit :course_id, :parent_id, :level,
                                  :status, :childrent_type, :start_time, :end_time, :tag,
-                                 :sort_id, :order_index, :user_name, :name, :description, :short_description, :avatar, :total_card_num, :question_number, :password, :duration, :pass, :time_practice, :score_scale
+                                 :sort_id, :order_index, :user_name, :name, :description, :short_description, :avatar, :total_card_num, :question_number, :password, :duration, :pass, :time_practice, :score_scale, :viewer
   end
 end
 

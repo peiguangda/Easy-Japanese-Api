@@ -22,6 +22,9 @@ user = User.first
     member_num: 20,
     time_expire: 1,
     day_to_open_lesson: 1,
+    cost: "500.000 VND",
+    language: "Tiếng Nhật",
+    lesson_num: 10,
     })
 end
 

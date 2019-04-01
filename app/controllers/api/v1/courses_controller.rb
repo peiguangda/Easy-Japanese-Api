@@ -47,7 +47,7 @@ class Api::V1::CoursesController < ApplicationController
   def course_params
     params.require(:course).permit :code, :short_description, :name,
                                  :owner_name, :avatar, :description, :password, :android_url,
-                                 :end_date, :status, :index, :time_expire, :day_to_open_lesson, :type
+                                 :end_date, :status, :index, :time_expire, :day_to_open_lesson, :type, :cost, :language
   end
 
 end

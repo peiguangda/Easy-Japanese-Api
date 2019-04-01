@@ -79,10 +79,13 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
     t.datetime "end_date", precision: 8
     t.integer "status", null: false
     t.integer "index"
+    t.integer "lesson_num", default: 0
     t.integer "member_num", default: 0
     t.integer "time_expire", default: 0
     t.integer "day_to_open_lesson"
     t.integer "type"
+    t.string "cost"
+    t.string "language"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["code"], name: "index_courses_on_code"

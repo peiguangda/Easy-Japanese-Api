@@ -6,6 +6,7 @@ class Api::V1::TopicsController < ApplicationController
   def index
     course = find_course
     topics = course.topics.all if course
+    topics = topics.where parent_id: topic_params[:parent_id] if topic_params[:parent_id]
     render json: {data: topics, status: "success"}, status: 200
   end
 

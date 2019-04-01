@@ -50,6 +50,7 @@ course = Course.first
     pass: 2,
     time_practice: 10,
     score_scale: 20,
+    viewer: 5,
     })
 end
 
@@ -74,6 +75,6 @@ topic = Topic.first
     back_image: "https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/88/59/99/885999fa-8119-d24b-fbd7-4692b619f5d8/AppIcon-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-4.png/246x0w.jpg?fbclid=IwAR0YYL3PnBuXA4s3svzjK5yACIlGOIKyMiCjySi68KbOafgllDEHHPhs5LQ",
     back_sound: "http://www.bsoftnamkam.xyz/japaneselisten/N3Listen/Audio/N3_KIKU_B_11.mp3",
     back_hint: "いい天気だな！",
-    viewer: 5,
+
     })
 end

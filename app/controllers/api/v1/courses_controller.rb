@@ -8,6 +8,7 @@ class Api::V1::CoursesController < ApplicationController
     render json: {data: courses, status: "success"}, status: 200
   end
 
+
   def create
     course = current_user.courses.build course_params
     if course.save

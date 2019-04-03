@@ -8,6 +8,12 @@ class Api::V1::UserCoursesController < ApplicationController
     render json: {data: courses, status: "success"}, status: 400 if courses
   end
 
+  def find_user_by_course
+    courses = Course.find_by id: user_course_params[:course_id]
+    users_by_course = courses.users
+    render json: {data: users_by_course, status: "success"} if users_by_course
+  end
+
   def create
     user_course = current_user.user_courses.build user_course_params
     if user_course.save

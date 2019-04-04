@@ -4,14 +4,9 @@ class Api::V1::UserCoursesController < ApplicationController
   respond_to :json
 
   def index
-    courses = UserCourse.where({course_id: user_course_params[:course_id]})
-    render json: {data: courses, status: "success"}, status: 400 if courses
-  end
-
-  def find_user_by_course
-    courses = Course.find_by id: user_course_params[:course_id]
-    users_by_course = courses.users
-    render json: {data: users_by_course, status: "success"} if users_by_course
+    user_course = UserCourse.where({course_id: user_course_params[:course_id]}) if user_course_params[:course_id]
+    user_course = UserCourse.where({user_id: user_course_params[:user_id]}) if user_course_params[:user_id]
+    render json: {data: user_course, status: "success"}, status: 201 if user_course
   end
 
   def create

@@ -10,22 +10,22 @@ class Api::V1::CardsController < ApplicationController
   end
 
   def create
-    course = find_course
-     return render json: {errors: "not found course"}, status: 422 unless course
-    card = Topic.find(params[:topic_id]).cards.build card_params
-    card.set_user_create_card current_user if card
-    card.set_course_for_card course if card
-    if card.save
-      topic = current_user.courses.find(params[:course_id]).topics.find(params[:topic_id])
-      topic.question_number += 1
-      topic.save
-      render json: {data: card, status: "success"}, status: 200, location: api_cards_path
-    else
-      render json: {errors: card.errors}, status: 422
+    params.require(:card).each do |key, value|
+      topic = find_topic value
+      card = topic.cards.build value.to_unsafe_h if topic
+      card.set_user_create_card current_user if card
+      card.set_course_for_card topic if topic
+      if card.save
+        topic.question_number += 1
+        topic.save
+      else
+        return render json: {errors: card.errors}, status: 422
+      end
     end
+    render json: {status: "success"}, status: 200, location: api_cards_path
   end
 
-   def update
+  def update
     card = find_card
     if card.update card_params
       render json: {data: card, status: "success"}, status: 201, location: api_cards_path
@@ -52,21 +52,21 @@ class Api::V1::CardsController < ApplicationController
 
   private
 
-   def find_course
-    course = Course.find_by(id: params[:course_id])
-  end
-
-  def find_topic
-    topic = Topic.find_by(id: params[:topic_id])
+  def find_topic value=params
+    Topic.find_by(id: value[:topic_id])
   end
 
   def find_card
     Card.find_by id: params[:id]
   end
+  
+  def param_length
+    params.require(:card).as_json.length
+  end
 
   def card_params
-    params.require(:card).permit topic_id, :course_id,:order_index, :difficulty_level,
-                                 :parent_id, :has_child, :status, :code,
-                                 :shuffle_anser, :front_text, :front_image, :front_sound, :front_hint, :back_text, :back_image, :back_sound, :back_hint
+    params.require(:card).permit :topic_id, :course_id,:order_index, :difficulty_level,
+                                :parent_id, :has_child, :status, :code,
+                                :shuffle_anser, :front_text, :front_image, :front_sound, :front_hint, :back_text, :back_image, :back_sound, :back_hint, list_answer, list_correct_answer
   end
 end

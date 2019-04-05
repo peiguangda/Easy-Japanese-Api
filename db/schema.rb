@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
     t.string "back_image"
     t.string "back_sound"
     t.string "back_hint"
+    t.string "list_answer"
+    t.string "list_correct_answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["code"], name: "index_cards_on_code"
@@ -74,7 +76,7 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
     t.string "owner_name", null: false
     t.string "avatar", default: ""
     t.string "description", default: ""
-    t.string "password", null: false
+    t.string "password", default: "", null: false
     t.string "android_url", default: ""
     t.datetime "end_date", precision: 8
     t.integer "status", null: false

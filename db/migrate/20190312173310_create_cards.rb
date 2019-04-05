@@ -20,6 +20,8 @@ class CreateCards < ActiveRecord::Migration[5.2]
       t.string :back_image
       t.string :back_sound
       t.string :back_hint
+      t.string :list_answer
+      t.string :list_correct_answer
 
       t.timestamps
     end

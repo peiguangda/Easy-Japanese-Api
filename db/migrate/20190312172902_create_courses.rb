@@ -8,7 +8,7 @@ class CreateCourses < ActiveRecord::Migration[5.2]
       t.string :owner_name, null: false
       t.string :avatar, default: ""
       t.string :description, default: ""
-      t.string :password, null: false
+      t.string :password, null: false, default: ""
       t.string :android_url, default: ""
       t.timestamp :end_date, limit: 8
       t.integer :status, null: false

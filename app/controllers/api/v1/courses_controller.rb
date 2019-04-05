@@ -11,6 +11,7 @@ class Api::V1::CoursesController < ApplicationController
 
   def create
     course = current_user.courses.build course_params
+    course.owner_name = current_user.full_name
     if course.save
       render json: {data: course, status: "success"}, status: 200, location: [:api, course]
     else
@@ -42,7 +43,7 @@ class Api::V1::CoursesController < ApplicationController
   private
 
   def find_course
-    current_user.courses.find params[:id]
+    Course.find params[:id]
   end
 
   def course_params

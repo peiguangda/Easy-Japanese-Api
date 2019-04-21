@@ -14,7 +14,7 @@ class Api::V1::SessionsController < ApplicationController
       user.save
       render json: {data: user, status: "success"}, status: 200, location: [:api, user]
     else
-      render json: {errors: "Invalid email or password"}, status: 422
+      render json: {status: "error", error: true, errors: "Invalid email or password"}, status: 422
     end
   end
 

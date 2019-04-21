@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :cards
       resources :topic_progresses, only: [:index, :create, :update]
       resources :user_courses
+      resources :card_progresses
     end
   end
 end

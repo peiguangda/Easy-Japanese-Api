@@ -23,7 +23,7 @@ class Api::V1::TopicsController < ApplicationController
     end
   end
 
-   def update
+  def update
     topic = find_topic
     if topic.update topic_params
       render json: {data: topic, status: "success"}, status: 201, location: api_topics_path

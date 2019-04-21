@@ -27,7 +27,7 @@ class Api::V1::CardsController < ApplicationController
 
   def update
     card = find_card
-    if card.update card_params
+    if card.update params.require(:card).to_unsafe_h
       render json: {data: card, status: "success"}, status: 201, location: api_cards_path
     else
       render json: {errors: card.errors}, status: 422
@@ -67,6 +67,6 @@ class Api::V1::CardsController < ApplicationController
   def card_params
     params.require(:card).permit :topic_id, :course_id,:order_index, :difficulty_level,
                                 :parent_id, :has_child, :status, :code,
-                                :shuffle_anser, :front_text, :front_image, :front_sound, :front_hint, :back_text, :back_image, :back_sound, :back_hint, list_answer, list_correct_answer
+                                :shuffle_anser, :front_text, :front_image, :front_sound, :front_hint, :back_text, :back_image, :back_sound, :back_hint, :list_answer => [], :list_correct_answer => []
   end
 end

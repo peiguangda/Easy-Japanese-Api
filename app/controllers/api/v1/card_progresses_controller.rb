@@ -17,13 +17,15 @@ class Api::V1::CardProgressesController < ApplicationController
     end
   end
 
-   def update
-    card_progress = find_card_progress
-    if card_progress.update card_progress_params
-      render json: {data: card_progress, status: "success"}, status: 201, location: [:api, card_progress]
-    else
+  def update
+    params.each do |key, value|
+      card_progress = find_card_progress value
+      if card_progress.update value
+      else
       render json: {errors: card_progress.errors}, status: 422
+      end
     end
+    render json: { status: "success"}, status: 201, location: [:api, card_progress]
   end
 
   def destroy
@@ -38,8 +40,8 @@ class Api::V1::CardProgressesController < ApplicationController
 
   private
 
-  def find_card_progress
-     card_progress = CardProgress.find_by id: params[:id]
+  def find_card_progress value=params
+     card_progress = CardProgress.find_by id: value[:id]
   end
   def card_progress_params
     params.require(:card_progress).permit :card_id, :course_id, :topic_id,

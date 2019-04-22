@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
     t.integer "course_id", limit: 8
     t.integer "topic_id", limit: 8
     t.integer "card_type", default: 0
-    t.integer "skill", null: false
+    t.integer "skill", default: 0
     t.integer "last_result", default: 0
-    t.integer "box_num"
+    t.integer "box_num", default: 0
     t.integer "difficulty_level"
     t.integer "progress", default: 0
     t.datetime "created_at", null: false

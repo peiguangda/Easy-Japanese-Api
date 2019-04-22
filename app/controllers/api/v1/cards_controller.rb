@@ -59,7 +59,7 @@ class Api::V1::CardsController < ApplicationController
   def find_card
     Card.find_by id: params[:id]
   end
-  
+
   def param_length
     params.require(:card).as_json.length
   end

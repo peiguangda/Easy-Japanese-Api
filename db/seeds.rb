@@ -53,7 +53,7 @@ course.topics.create!({
     time_practice: 10,
     score_scale: 20,
     viewer: 5,
-    })
+
 5.times do |i|
   course.topics.create!({
     user_id: user.id,

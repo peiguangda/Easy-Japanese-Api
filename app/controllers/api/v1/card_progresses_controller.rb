@@ -18,11 +18,13 @@ class Api::V1::CardProgressesController < ApplicationController
   end
 
    def update
-    card_progress = find_card_progress
-    if card_progress.update card_progress_params
-      render json: {data: card_progress, status: "success"}, status: 201, location: [:api, card_progress]
-    else
+    params.require(:card_progress).each do |key, value|
+      card_progress = find_card_progress value
+      if card_progress.update value.to_unsafe_h
+        render json: {data: card_progress, status: "success"}, status: 201, location: [:api, card_progress]
+      else
       render json: {errors: card_progress.errors}, status: 422
+      end
     end
   end
 
@@ -38,7 +40,7 @@ class Api::V1::CardProgressesController < ApplicationController
 
   private
 
-  def find_card_progress
+  def find_card_progress value=params
      card_progress = CardProgress.find_by id: params[:id]
   end
   def card_progress_params

@@ -226,6 +226,7 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
     t.integer "time_practice"
     t.float "score_scale"
     t.integer "viewer"
+    t.string "video_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["childrent_type"], name: "index_topics_on_childrent_type"

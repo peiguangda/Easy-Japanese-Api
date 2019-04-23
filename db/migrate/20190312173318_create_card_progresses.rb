@@ -6,9 +6,9 @@ class CreateCardProgresses < ActiveRecord::Migration[5.2]
       t.integer :course_id, index: true, limit: 8
       t.integer :topic_id, index: true, limit: 8
       t.integer :card_type, default: 0, index: true
-      t.integer :skill, null: false, index: true
+      t.integer :skill, index: true, default: 0
       t.integer :last_result, default: 0
-      t.integer :box_num
+      t.integer :box_num, default: 0
       t.integer :difficulty_level
       t.integer :progress, default: 0
 

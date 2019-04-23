@@ -18,6 +18,7 @@ class Api::V1::CardsController < ApplicationController
       if card.save
         topic.question_number += 1
         topic.save
+        c = CardProgress.create("user_id": card.user_id, "card_id": card.id,"course_id": card.course_id,"topic_id": card.topic_id, "difficulty_level": card.difficulty_level)
       else
         return render json: {errors: card.errors}, status: 422
       end
@@ -59,7 +60,7 @@ class Api::V1::CardsController < ApplicationController
   def find_card
     Card.find_by id: params[:id]
   end
-  
+
   def param_length
     params.require(:card).as_json.length
   end

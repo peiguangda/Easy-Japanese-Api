@@ -4,7 +4,7 @@ class Api::V1::CardProgressesController < ApplicationController
   respond_to :json
 
   def index
-    card_progresses = CardProgress.where({ user_id: current_user.id, card_id: card_progress_params[:card_id]})
+    card_progresses = CardProgress.where({ user_id: current_user.id, topic_id: params[:topic_id]})
     render json: {data: card_progresses, status: "success"}, status: 200 if card_progresses
   end
 

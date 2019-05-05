@@ -19,7 +19,7 @@ class CreateTopics < ActiveRecord::Migration[5.2]
       t.string :short_description
       t.string :avatar, default: ""
       t.integer :total_card_num, default: 0
-      t.integer :question_number
+      t.integer :question_number, default: 0
       t.string :password
       t.integer :duration
       t.integer :pass

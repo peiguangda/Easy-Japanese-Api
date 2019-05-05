@@ -5,7 +5,7 @@ class Api::V1::CardsController < ApplicationController
 
   def index
     topic = find_topic
-    cards = topic.cards.all if topic
+    cards = topic.cards.all.order("RANDOM()").limit(params[:limit]) if topic
     render json: {data: cards, status: "success"}, status: 200
   end
 

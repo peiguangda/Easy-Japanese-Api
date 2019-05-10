@@ -12,7 +12,7 @@ class Api::V1::UserCoursesController < ApplicationController
   def create
     user_course = current_user.user_courses.build user_course_params
     if user_course.save
-      render json: {data: user_course, status: success}, status: 201, location: [:api, user_course]
+      render json: {data: user_course, status: "success"}, status: 201, location: [:api, user_course]
     else
       render json: {errors: user_course.errors}, status: 422
     end
@@ -40,7 +40,7 @@ class Api::V1::UserCoursesController < ApplicationController
   end
 
   def user_course_params
-    params.require(:user_course).permit :course_id, :role_type, :join_date, :expire_date,
+    params.require(:user_course).permit :user_id, :course_id, :role_type, :join_date, :expire_date,
                                  :total_time_study, :status, :topic_passed, :exp, :rate_value,
                                  :role_name, :comment, :admin_comment
   end

@@ -17,7 +17,9 @@ class Api::V1::CardsController < ApplicationController
       card.set_course_for_card topic if topic
       if card.save
         topic.question_number += 1
+        topic.childrent_type = 0
         topic.save
+        # can tao cho tat ca user
         CardProgress.create("user_id": card.user_id, "card_id": card.id,"course_id": card.course_id,"topic_id": card.topic_id, "difficulty_level": card.difficulty_level)
       else
         return render json: {errors: card.errors}, status: 422

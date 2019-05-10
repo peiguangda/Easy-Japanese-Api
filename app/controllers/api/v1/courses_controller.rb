@@ -13,6 +13,7 @@ class Api::V1::CoursesController < ApplicationController
     course = current_user.courses.build course_params
     course.owner_name = current_user.full_name
     if course.save
+      UserCourse.create user_id: current_user.id, course_id: course.id, role_type: 1
       render json: {data: course, status: "success"}, status: 200, location: [:api, course]
     else
       render json: {errors: course.errors}, status: 422

@@ -5,13 +5,14 @@ class Api::V1::UserCoursesController < ApplicationController
 
   def index
     user_course = UserCourse.where({course_id: user_course_params[:course_id]}) if user_course_params[:course_id]
-    user_course = UserCourse.where({user_id: user_course_params[:user_id]}) if user_course_params[:user_id]
+    user_course = user_course.where({user_id: user_course_params[:user_id]}) if user_course_params[:user_id]
     render json: {data: user_course, status: "success"}, status: 201 if user_course
   end
 
   def create
     user_course = current_user.user_courses.build user_course_params
     if user_course.save
+      user_course.course.topics.map{|item| create_card_progress item}
       render json: {data: user_course, status: "success"}, status: 201, location: [:api, user_course]
     else
       render json: {errors: user_course.errors}, status: 422
@@ -34,6 +35,15 @@ class Api::V1::UserCoursesController < ApplicationController
   end
 
   private
+  def create_card_progress item
+    if item.childrent_type == 0 #1 la topic, 0 la card
+      item.cards.map{|card| CardProgress.create user_id: current_user.id, card_id: card.id, topic_id: card.topic_id, course_id: card.course_id }
+    # else
+    #   topics = Topic.where parent_id: item.id
+    #   return unless topics
+    #   topics.map{|topic| return create_card_progress topic}
+    end
+  end
 
   def find_user
     UserCourse.find_by user_id: params[:id]

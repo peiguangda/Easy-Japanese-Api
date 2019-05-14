@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :user_courses, dependent: :destroy
   has_many :courses, dependent: :destroy
   has_many :topic_progresses, dependent: :destroy
+  has_many :topic_histories, dependent: :destroy
   has_many :topics, dependent: :destroy
   has_many :cards, dependent: :destroy
   has_many :exam_scores, dependent: :destroy

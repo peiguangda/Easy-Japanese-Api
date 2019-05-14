@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_13_162912) do
+ActiveRecord::Schema.define(version: 2019_05_14_143928) do
 
   create_table "card_progresses", force: :cascade do |t|
     t.integer "user_id"
@@ -175,6 +175,20 @@ ActiveRecord::Schema.define(version: 2019_03_13_162912) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "topic_histories", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "topic_id"
+    t.integer "course_id"
+    t.integer "score"
+    t.integer "correct"
+    t.integer "total"
+    t.string "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_topic_histories_on_topic_id"
+    t.index ["user_id"], name: "index_topic_histories_on_user_id"
   end
 
   create_table "topic_progresses", force: :cascade do |t|

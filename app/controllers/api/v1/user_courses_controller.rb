@@ -12,7 +12,10 @@ class Api::V1::UserCoursesController < ApplicationController
   def create
     user_course = current_user.user_courses.build user_course_params
     if user_course.save
-      user_course.course.topics.map{|item| create_card_progress item}
+      course = user_course.course
+      course.topics.map{|item| create_card_progress item}
+      course.member_num += 1
+      course.save
       render json: {data: user_course, status: "success"}, status: 201, location: [:api, user_course]
     else
       render json: {errors: user_course.errors}, status: 422

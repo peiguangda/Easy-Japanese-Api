@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :topic_progresses, only: [:index, :create, :update]
       resources :user_courses
       resources :card_progresses
+      resources :topic_histories, only: [:index, :create, :update]
     end
   end
 end

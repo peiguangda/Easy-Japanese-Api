@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_14_143928) do
+ActiveRecord::Schema.define(version: 2019_05_16_075840) do
 
   create_table "card_progresses", force: :cascade do |t|
     t.integer "user_id"
@@ -297,6 +297,40 @@ ActiveRecord::Schema.define(version: 2019_05_14_143928) do
     t.index ["full_name"], name: "index_users_on_full_name"
     t.index ["phone_number"], name: "index_users_on_phone_number"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "video_scenarios", force: :cascade do |t|
+    t.integer "topic_id"
+    t.integer "course_id"
+    t.integer "auto_play", default: 0
+    t.integer "status", default: 0
+    t.integer "type_scenario", default: 1
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string "video_url", null: false
+    t.integer "time_question_data", default: 10000000
+    t.string "title", default: ""
+    t.string "description", default: ""
+    t.string "thumbnail", default: ""
+    t.boolean "is_must_answer", default: false
+    t.boolean "is_must_answer_correct", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_video_scenarios_on_topic_id"
+  end
+
+  create_table "video_time_items", force: :cascade do |t|
+    t.integer "video_scenario_id"
+    t.string "list_card_id", null: false
+    t.integer "index"
+    t.integer "time_practice", default: 1000000
+    t.string "title", default: ""
+    t.string "code", default: ""
+    t.string "data"
+    t.integer "start_time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["video_scenario_id"], name: "index_video_time_items_on_video_scenario_id"
   end
 
 end

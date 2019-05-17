@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       resources :user_courses
       resources :card_progresses
       resources :topic_histories, only: [:index, :create, :update]
+      resources :video_scenarios
+      resources :video_time_items
     end
   end
 end

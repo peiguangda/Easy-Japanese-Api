@@ -1,7 +1,7 @@
-# User.create({email: "example@marketplace.com",
-#             account: "peiguangda",
-#             password: "12345678",
-#             password_confirmation: "12345678"})
+User.create({email: "example@marketplace.com",
+            account: "peiguangda",
+            password: "12345678",
+            password_confirmation: "12345678"})
 
 user = User.first
 
@@ -28,107 +28,107 @@ user = User.first
     })
 end
 
-# course = Course.first
-# course.topics.create!({
-#     user_id: user.id,
-#     parent_id: 0,
-#     level: 1,
-#     status: 1,
-#     childrent_type: 1, #1 la topic,0 la card
-#     start_time: 1000,
-#     end_time: 1500,
-#     tag: "Tiếng Nhật ",
-#     sort_id: 1,
-#     order_index: 1,
-#     user_name: "Bùi Quang Đại",
-#     name: "Ngữ pháp",
-#     description: "Giáo trình ngữ pháp N1 có mẫu câu, ví dụ, các bài tập cuối chương,...Có file âm thanh.",
-#     short_description: "Học ngữ pháp N1",
-#     avatar:"https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/88/59/99/885999fa-8119-d24b-fbd7-4692b619f5d8/AppIcon-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-4.png/246x0w.jpg?fbclid=IwAR0YYL3PnBuXA4s3svzjK5yACIlGOIKyMiCjySi68KbOafgllDEHHPhs5LQ",
-#     total_card_num: 1,
-#     question_number: 40,
-#     password: "123456",
-#     duration: 1,
-#     pass: 2,
-#     time_practice: 10,
-#     score_scale: 20,
-#     viewer: 5,
-#     })
-# 5.times do |i|
-#   course.topics.create!({
-#     user_id: user.id,
-#     parent_id: 1,
-#     level: 1,
-#     status: 1,
-#     childrent_type: 1, #1 la topic,0 la card
-#     start_time: 1000,
-#     end_time: 1500,
-#     tag: "Tiếng Nhật ",
-#     sort_id: 1,
-#     order_index: 1,
-#     user_name: "Bùi Quang Đại",
-#     name: "Ngữ pháp"+ (i+1).to_s,
-#     description: "Giáo trình ngữ pháp N1 có mẫu câu, ví dụ, các bài tập cuối chương,...Có file âm thanh.",
-#     short_description: "Học ngữ pháp N1",
-#     avatar:"https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/88/59/99/885999fa-8119-d24b-fbd7-4692b619f5d8/AppIcon-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-4.png/246x0w.jpg?fbclid=IwAR0YYL3PnBuXA4s3svzjK5yACIlGOIKyMiCjySi68KbOafgllDEHHPhs5LQ",
-#     total_card_num: 1,
-#     question_number: 40,
-#     password: "123456",
-#     duration: 1,
-#     pass: 2,
-#     time_practice: 10,
-#     score_scale: 20,
-#     viewer: 5,
-#     })
-# end
+course = Course.first
+course.topics.create!({
+    user_id: user.id,
+    parent_id: 0,
+    level: 1,
+    status: 1,
+    childrent_type: 1, #1 la topic,0 la card
+    start_time: 1000,
+    end_time: 1500,
+    tag: "Tiếng Nhật ",
+    sort_id: 1,
+    order_index: 1,
+    user_name: "Bùi Quang Đại",
+    name: "Ngữ pháp",
+    description: "Giáo trình ngữ pháp N1 có mẫu câu, ví dụ, các bài tập cuối chương,...Có file âm thanh.",
+    short_description: "Học ngữ pháp N1",
+    avatar:"https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/88/59/99/885999fa-8119-d24b-fbd7-4692b619f5d8/AppIcon-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-4.png/246x0w.jpg?fbclid=IwAR0YYL3PnBuXA4s3svzjK5yACIlGOIKyMiCjySi68KbOafgllDEHHPhs5LQ",
+    total_card_num: 1,
+    question_number: 40,
+    password: "123456",
+    duration: 1,
+    pass: 2,
+    time_practice: 10,
+    score_scale: 20,
+    viewer: 5,
+    })
+5.times do |i|
+  course.topics.create!({
+    user_id: user.id,
+    parent_id: 1,
+    level: 1,
+    status: 1,
+    childrent_type: 1, #1 la topic,0 la card
+    start_time: 1000,
+    end_time: 1500,
+    tag: "Tiếng Nhật ",
+    sort_id: 1,
+    order_index: 1,
+    user_name: "Bùi Quang Đại",
+    name: "Ngữ pháp"+ (i+1).to_s,
+    description: "Giáo trình ngữ pháp N1 có mẫu câu, ví dụ, các bài tập cuối chương,...Có file âm thanh.",
+    short_description: "Học ngữ pháp N1",
+    avatar:"https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/88/59/99/885999fa-8119-d24b-fbd7-4692b619f5d8/AppIcon-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-4.png/246x0w.jpg?fbclid=IwAR0YYL3PnBuXA4s3svzjK5yACIlGOIKyMiCjySi68KbOafgllDEHHPhs5LQ",
+    total_card_num: 1,
+    question_number: 40,
+    password: "123456",
+    duration: 1,
+    pass: 2,
+    time_practice: 10,
+    score_scale: 20,
+    viewer: 5,
+    })
+end
 
-# 5.times do |i|
-#   course.topics.create!({
-#     user_id: user.id,
-#     parent_id: 2,
-#     level: 1,
-#     status: 1,
-#     childrent_type: 0, #1 la topic,0 la card
-#     start_time: 1000,
-#     end_time: 1500,
-#     tag: "Tiếng Nhật ",
-#     sort_id: 1,
-#     order_index: 1,
-#     user_name: "Bùi Quang Đại",
-#     name: "Ngữ pháp"+ (i+1).to_s,
-#     description: "Giáo trình ngữ pháp N1 có mẫu câu, ví dụ, các bài tập cuối chương,...Có file âm thanh.",
-#     short_description: "Học ngữ pháp N1",
-#     avatar:"https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/88/59/99/885999fa-8119-d24b-fbd7-4692b619f5d8/AppIcon-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-4.png/246x0w.jpg?fbclid=IwAR0YYL3PnBuXA4s3svzjK5yACIlGOIKyMiCjySi68KbOafgllDEHHPhs5LQ",
-#     total_card_num: 1,
-#     password: "123456",
-#     duration: 1,
-#     pass: 2,
-#     time_practice: 10,
-#     score_scale: 20,
-#     viewer: 5,
-#     })
-# end
+5.times do |i|
+  course.topics.create!({
+    user_id: user.id,
+    parent_id: 2,
+    level: 1,
+    status: 1,
+    childrent_type: 0, #1 la topic,0 la card
+    start_time: 1000,
+    end_time: 1500,
+    tag: "Tiếng Nhật ",
+    sort_id: 1,
+    order_index: 1,
+    user_name: "Bùi Quang Đại",
+    name: "Ngữ pháp"+ (i+1).to_s,
+    description: "Giáo trình ngữ pháp N1 có mẫu câu, ví dụ, các bài tập cuối chương,...Có file âm thanh.",
+    short_description: "Học ngữ pháp N1",
+    avatar:"https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/88/59/99/885999fa-8119-d24b-fbd7-4692b619f5d8/AppIcon-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-4.png/246x0w.jpg?fbclid=IwAR0YYL3PnBuXA4s3svzjK5yACIlGOIKyMiCjySi68KbOafgllDEHHPhs5LQ",
+    total_card_num: 1,
+    password: "123456",
+    duration: 1,
+    pass: 2,
+    time_practice: 10,
+    score_scale: 20,
+    viewer: 5,
+    })
+end
 
-# topic = Topic.first
+topic = Topic.first
 
-# 40.times do
-#   topic.cards.create!({
-#     user_id: user.id,
-#     course_id: course.id,
-#     order_index: 1,
-#     difficulty_level: 1,
-#     parent_id: 1,
-#     has_child: 1,
-#     status: 1,
-#     code: "N2_01",
-#     shuffle_anser: 2,
-#     front_text:"天気はどうですか。 ",
-#     front_image: "https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/88/59/99/885999fa-8119-d24b-fbd7-4692b619f5d8/AppIcon-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-4.png/246x0w.jpg?fbclid=IwAR0YYL3PnBuXA4s3svzjK5yACIlGOIKyMiCjySi68KbOafgllDEHHPhs5LQ",
-#     front_sound: "http://www.bsoftnamkam.xyz/japaneselisten/N3Listen/Audio/N3_KIKU_B_11.mp3",
-#     front_hint: "いい天気だな！",
-#     back_text: "天気はどうですか。",
-#     back_image: "https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/88/59/99/885999fa-8119-d24b-fbd7-4692b619f5d8/AppIcon-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-4.png/246x0w.jpg?fbclid=IwAR0YYL3PnBuXA4s3svzjK5yACIlGOIKyMiCjySi68KbOafgllDEHHPhs5LQ",
-#     back_sound: "http://www.bsoftnamkam.xyz/japaneselisten/N3Listen/Audio/N3_KIKU_B_11.mp3",
-#     back_hint: "いい天気だな！",
-#     })
-# end
+40.times do
+  topic.cards.create!({
+    user_id: user.id,
+    course_id: course.id,
+    order_index: 1,
+    difficulty_level: 1,
+    parent_id: 1,
+    has_child: 1,
+    status: 1,
+    code: "N2_01",
+    shuffle_anser: 2,
+    front_text:"天気はどうですか。 ",
+    front_image: "https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/88/59/99/885999fa-8119-d24b-fbd7-4692b619f5d8/AppIcon-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-4.png/246x0w.jpg?fbclid=IwAR0YYL3PnBuXA4s3svzjK5yACIlGOIKyMiCjySi68KbOafgllDEHHPhs5LQ",
+    front_sound: "http://www.bsoftnamkam.xyz/japaneselisten/N3Listen/Audio/N3_KIKU_B_11.mp3",
+    front_hint: "いい天気だな！",
+    back_text: "天気はどうですか。",
+    back_image: "https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/88/59/99/885999fa-8119-d24b-fbd7-4692b619f5d8/AppIcon-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-4.png/246x0w.jpg?fbclid=IwAR0YYL3PnBuXA4s3svzjK5yACIlGOIKyMiCjySi68KbOafgllDEHHPhs5LQ",
+    back_sound: "http://www.bsoftnamkam.xyz/japaneselisten/N3Listen/Audio/N3_KIKU_B_11.mp3",
+    back_hint: "いい天気だな！",
+    })
+end

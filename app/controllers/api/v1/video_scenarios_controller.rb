@@ -11,6 +11,8 @@ class Api::V1::VideoScenariosController < ApplicationController
 
   def create
     video_scenario = VideoScenario.create video_scenario_params
+    lesson = Topic.find video_scenario_params[:topic_id]
+    video_scenario.course_id = lesson.id if lesson
     if video_scenario.save
       render json: {data: video_scenario, status: "success"}, status: 200, location: [:api, video_scenario]
     else
